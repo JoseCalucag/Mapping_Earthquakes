@@ -26,15 +26,37 @@ let baseMaps = {
 let map = L.map('mapid', {
     center: [39.5, -98.5],
     zoom: 3,
-    layers: [streets]
+    layers: [streets],
+    radius: 20000
 });
 
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
 
 // Retrieve the earthquake GeoJSON data.
-city = d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
+  
+  function styleInfo(feature) {
+    return {
+      opacity: 1.75,
+      fillOpacity: 1,
+      fillColor: "yellow",
+      color: "black",
+      weight: 0.5
+    };
+  }
+
+    
   // Creating a GeoJSON layer with the retrieved data.
-  console.log(city)
-    L.geoJson(city.location).addTo(map);
-});
+  L.geoJson(data, {
+
+    // We turn each feature into a circleMarker on the map.
+    
+    pointToLayer: function(feature, latlng) {
+                console.log(data);
+                return L.circleMarker(latlng);
+            },
+          // We set the style for each circleMarker using our styleInfo function.
+        style: styleInfo
+        }).addTo(map);
+    });

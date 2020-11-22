@@ -38,13 +38,13 @@ let torontoHoods = "https://raw.githubusercontent.com/JoseCalucag/Mapping_Earthq
 d3.json(torontoHoods).then(function(data) {
     console.log(data);
 
-// Loop through the cities array and create one marker for each city.
-airportData.forEach(function(city) {
-    console.log(city)
-    L.marker(data)
-    .bindPopup("<h2> Airport code: " + features.properties.faa + "<br> Airport name: " + features.p)
-    .addTo(map);
-});
+// // Loop through the cities array and create one marker for each city.
+// airportData.forEach(function(city) {
+//     console.log(city)
+//     L.marker(data)
+//     .bindPopup("<h2> Airport code: " + features.properties.faa + "<br> Airport name: " + features.p)
+//     .addTo(map);
+// });
 
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJson(data).addTo(map);

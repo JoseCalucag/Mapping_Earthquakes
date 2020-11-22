@@ -136,10 +136,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
   
   // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
   function getColor(magnitude) {
-    if (magnitude > 5) {
+    if (magnitude > 6) {
       return "##000000";
     }
-    if (magnitude >= 4) {
+    if (magnitude >= 5) {
       return "#454545";
     }
     return "#828282";  
